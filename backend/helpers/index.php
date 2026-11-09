@@ -53,3 +53,15 @@ function get_menu_by_slug(string $slug): array
     }
     return $items;
 }
+
+// -> YouTube-Video-ID aus einem Link auslesen (watch?v=, youtu.be/, shorts/, embed/)
+function get_youtube_id(?string $url): string|false
+{
+    if (!$url) {
+        return false;
+    }
+    if (preg_match('~(?:youtu\.be/|youtube(?:-nocookie)?\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/))([A-Za-z0-9_-]{11})~', $url, $m)) {
+        return $m[1];
+    }
+    return false;
+}

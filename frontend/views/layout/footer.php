@@ -1,31 +1,22 @@
 <?php
 $menu = get_menu_by_slug('legals');
-
-$logo = get_globals_logo();
-
+$email = get_globals_email();
 $socials = get_globals_socials();
-
 ?>
 
 <footer data-layout="footer">
-    <mark>hier kommt der footer</mark>
-    <img class="logo" src="<?= $logo['src'] ?>" alt="<?= $logo['alt'] ?>" height="120px"/>
-    <div class="socials">
+    <div class="contact">
+        <?php if ($email) : ?>
+            <a href="mailto:<?= esc_attr($email) ?>"><?= esc_html($email) ?></a>
+        <?php endif; ?>
         <?php foreach ($socials as $social) : ?>
-            <a href="<?= $social['link'] ?>" target="_blank" aria-label="<?= $social['title'] ?>">
-                <img src="<?= $social['icon']['src'] ?>" alt="<?= $social['icon']['alt'] ?>">
-            </a>
+            <a href="<?= esc_url($social['link']) ?>" target="_blank" rel="noopener"><?= esc_html($social['title']) ?></a>
         <?php endforeach; ?>
     </div>
-    <nav class="nav_container">
-        <ul class="nav">
-            <?php foreach ($menu as $item) : ?>
-                <li class="nav_item">
-                    <a href="<?= $item['url'] ?>" target="<?= $item['target'] ?>">
-                        <?= $item['title'] ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </nav>
+    <div class="legal">
+        <span>© <?= date('Y') ?> <?php bloginfo('name') ?></span>
+        <?php foreach ($menu as $item) : ?>
+            <a href="<?= esc_url($item['url']) ?>"><?= esc_html($item['title']) ?></a>
+        <?php endforeach; ?>
+    </div>
 </footer>

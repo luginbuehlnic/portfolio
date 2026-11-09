@@ -18,7 +18,7 @@ register_post_type('project', [
         'not_found' => 'Kein Projekt gefunden',
         'not_found_in_trash' => 'Kein Projekt im Papierkorb gefunden',
     ],
-    'supports' => ['title'],
+    'supports' => ['title', 'page-attributes'], // page-attributes = Feld «Reihenfolge» für die Sortierung
     'hierarchical' => false,
     'public' => true,
     'show_ui' => true,
