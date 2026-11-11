@@ -2,9 +2,15 @@
 $menu = get_menu_by_slug('legals');
 $email = get_globals_email();
 $socials = get_globals_socials();
+$logo = get_globals_logo();
 ?>
 
 <footer data-layout="footer">
+    <?php if ($logo) : ?>
+        <a class="footer_logo_link" href="<?= esc_url(home_url('/')) ?>" aria-label="Startseite">
+            <img class="footer_logo" src="<?= esc_url($logo['src']) ?>" alt="<?= esc_attr(get_bloginfo('name')) ?>" loading="lazy">
+        </a>
+    <?php endif; ?>
     <div class="contact">
         <?php if ($email) : ?>
             <a href="mailto:<?= esc_attr($email) ?>"><?= esc_html($email) ?></a>

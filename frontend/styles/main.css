@@ -124,15 +124,25 @@ img, video {
 }
 
 [data-layout="footer"] {
-    padding: 64px var(--gap-around) 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 16px 40px;
-    flex-wrap: wrap;
+    padding: 35px var(--gap-around) 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "logo    ."
+        "contact legal";
+    align-items: end;
+    gap: 32px 40px;
     font: var(--font-small);
     color: var(--color-muted);
 
+    .footer_logo_link { grid-area: logo; justify-self: start; }
+    .contact { grid-area: contact; }
+    .legal { grid-area: legal; }
+
+    .footer_logo {
+        height: 28px;
+        width: auto;
+    }
     .contact, .legal {
         display: flex;
         flex-wrap: wrap;
@@ -141,8 +151,20 @@ img, video {
     .contact a {
         color: var(--color-text);
     }
-    a:hover {
+    .contact a:hover,
+    .legal a:hover {
         opacity: .6;
+    }
+
+    /* Handy: alles untereinander */
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "logo"
+            "contact"
+            "legal";
+        gap: 16px;
+        .footer_logo { height: 22px; }
     }
 }
 
