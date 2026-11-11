@@ -69,7 +69,7 @@ $poster = $project['image_large'];
 
     <?php if ($next) : ?>
         <nav class="next" aria-label="Nächstes Projekt">
-            <span class="label">Nächstes Projekt</span>
+            <!-- <span class="label">Nächstes Projekt</span> -->
             <a href="<?= esc_url($next['link']) ?>"><?= esc_html($next['title']) ?> →</a>
         </nav>
     <?php endif; ?>
